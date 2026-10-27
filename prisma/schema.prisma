@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id             String         @id @default(uuid())
+  name           String
+  netIncome      Float          // Ingreso neto
+  grossIncome    Float          // Ingreso bruto
+  otherIncomes   String?        // Json o string de otras fuentes
+  accounts       Account[]
+  goals          Goal[]
+  subscriptions  Subscription[]
+  chatThreads    ChatThread[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Account {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type             String   // "DEBIT" o "CREDIT"
+  name             String   // Ej. "Sueldo BCP", "Visa Interbank"
+  
+  // Campos Débito
+  balance          Float?   // Saldo actual
+  trea             Float?   // TREA
+  maintenanceFee   Float?   // Comisión Mantenimiento
+  
+  // Campos Crédito
+  creditLimit      Float?   // Límite de Crédito
+  currentDebt      Float?   // Deuda Actual
+  billingDay       Int?     // Día de Corte
+  paymentDay       Int?     // Día de Pago
+  tcea             Float?   // TCEA
+  tea              Float?   // TEA
+  insuranceFee     Float?   // Seguro Desgravamen
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Goal {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  targetAmount Float
+  currentAmount Float  @default(0)
+  targetDate  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Subscription {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  amount      Float
+  frequency   String   // "MONTHLY", "YEARLY"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ChatThread {
+  id          String        @id @default(uuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String        @default("Nueva Asesoría")
+  messages    ChatMessage[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model ChatMessage {
+  id          String     @id @default(uuid())
+  threadId    String
+  thread      ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  role        String     // "user", "model", "system"
+  content     String
+  createdAt   DateTime   @default(now())
+}

@@ -1,0 +1,154 @@
+.container {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Income Section */
+.incomeSection {
+  margin-bottom: 40px;
+}
+
+.incomeCard {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incomeInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.incomeHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.eyeButtonInline {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.eyeButtonInline:hover {
+  color: var(--text-primary);
+}
+
+.incomeLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.incomeAmount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.editButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.editButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Cards Section */
+.cardsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionHeader h2 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.addButton {
+  background: var(--accent-glow);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--accent-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background: var(--accent-primary);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:global([data-view-mode="desktop"]) .container {
+  max-width: 1100px;
+  padding: 32px 32px 140px 32px;
+}
+
+:global([data-view-mode="desktop"]) .cardsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+

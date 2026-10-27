@@ -1,0 +1,174 @@
+.walletCard {
+  width: 100%;
+  aspect-ratio: 1.586; /* Standard credit card ratio */
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.walletCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15); /* Subtle emerald glow on hover */
+}
+
+/* Background Gradients */
+.debitBg {
+  background: linear-gradient(135deg, #1C2329 0%, #0F141A 100%);
+}
+
+.creditBg {
+  background: linear-gradient(135deg, #252836 0%, #171923 100%);
+}
+
+/* Add a subtle pattern/overlay for premium feel */
+.walletCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+.bankAndType {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bankName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.05em;
+}
+
+.cardType {
+  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.editButton {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.cardChip {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.cardBody {
+  flex-grow: 1;
+}
+
+.cardNumber {
+  display: flex;
+  gap: 12px;
+  font-family: 'Courier New', Courier, monospace; /* Monospace for card numbers */
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 2px;
+  margin-top: 15px;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.balanceSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.balanceHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.eyeButton {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.eyeButton:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.balanceLabel {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.balanceAmount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.cardName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}

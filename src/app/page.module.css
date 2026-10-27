@@ -1,0 +1,306 @@
+.container {
+  padding: 20px 18px 40px 18px;
+  animation: fadeIn 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.columnLeft,
+.columnRight {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+:global([data-view-mode="desktop"]) .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 32px 120px 32px;
+}
+
+:global([data-view-mode="desktop"]) .dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #059669 100%);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Hero Section */
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Score Card */
+.scoreCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.scoreRing {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+.circularChart {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 250px;
+}
+
+.circleBg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2.5;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke: var(--accent-primary);
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% { stroke-dasharray: 0 100; }
+}
+
+.scoreValue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.scoreInfo h3 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.scoreInfo p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Liquidity */
+.liquidityCard {
+  background: linear-gradient(135deg, rgba(37, 40, 54, 0.8) 0%, rgba(23, 25, 35, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.liquidityLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.liquidityAmount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* AI Alert */
+.aiAlertCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 16px;
+  padding: 16px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.aiAlertCard:active {
+  transform: scale(0.98);
+}
+
+.aiAlertIcon {
+  font-size: 1.5rem;
+}
+
+.aiAlertContent h4 {
+  color: var(--accent-primary);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.aiAlertContent p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.aiAlertAction {
+  color: var(--text-muted);
+}
+
+/* Common Section Title */
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* History List (Mobile Table Equivalent) */
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.historyRow {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.historyMonth {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.historyStats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.historyStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.statIncome { color: var(--accent-primary); font-weight: 600; font-size: 0.9rem; }
+.statExpense { color: #ef4444; font-weight: 600; font-size: 0.9rem; }
+.statBalance { color: #fff; font-weight: 600; font-size: 0.9rem; }
+
+
+/* Goals */
+.goalCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.goalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.goalName {
+  font-weight: 500;
+  color: #fff;
+}
+
+.goalPercent {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.progressBarBg {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+
+.goalFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

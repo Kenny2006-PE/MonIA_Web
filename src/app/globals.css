@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Fondo oscuro principal */
+  --bg-primary: #0F1115;
+  
+  /* Contenedores y tarjetas */
+  --bg-secondary: #16191E;
+  --bg-tertiary: #1E2128;
+  
+  /* Textos */
+  --text-primary: #FFFFFF;
+  --text-secondary: #8B949E;
+  --text-muted: #57606A;
+  
+  /* Acentos (Verde esmeralda sofisticado para finanzas) */
+  --accent-primary: #10B981;
+  --accent-secondary: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.15);
+  
+  /* Peligro/Alerta */
+  --danger: #F43F5E;
+  
+  /* Bordes */
+  --border-light: rgba(255, 255, 255, 0.08);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(22, 25, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
+
+  --frame-max-width: 430px;
+}
+
+[data-view-mode="mobile"] {
+  --frame-max-width: 430px;
+}
+
+[data-view-mode="desktop"] {
+  --frame-max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilidades para Glassmorphism (Navbar, modals) */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Tarjetas elegantes */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Botones principales */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #000000;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:hover {
+  background-color: #34D399;
+}
+
+/* Botones secundarios (Outlined) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Inputs elegantes */
+.input-field {
+  width: 100%;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Layout base */
+.main-content {
+  padding-bottom: 24px;
+  min-height: 100%;
+}
+
+[data-view-mode="desktop"] .main-content {
+  padding-bottom: 100px;
+}
