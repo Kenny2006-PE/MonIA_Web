@@ -114,16 +114,12 @@ export async function getMessages(threadId: string) {
 
 // 4. Eliminar un hilo de conversación y sus mensajes
 export async function deleteThread(threadId: string) {
-  const user = await getDefaultUser();
   try {
     await prisma.chatMessage.deleteMany({
       where: { threadId }
     });
     await prisma.chatThread.deleteMany({
-      where: {
-        id: threadId,
-        userId: user.id
-      }
+      where: { id: threadId }
     });
     revalidatePath("/chat");
     return { success: true };
