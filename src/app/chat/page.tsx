@@ -1,7 +1,7 @@
-import Link from "next/link";
 import styles from "./page.module.css";
 import { getThreads, createThread } from "@/app/actions/chat";
 import { redirect } from "next/navigation";
+import ChatListItem from "@/components/chat/ChatListItem";
 
 export default async function ChatListPage() {
   const threads = await getThreads();
@@ -44,25 +44,14 @@ export default async function ChatListPage() {
           {threads.map((thread) => {
             const lastMsg = thread.messages?.[0]?.content || "Inicia tu consulta...";
             return (
-              <Link href={`/chat/${thread.id}`} key={thread.id} className={styles.threadItem}>
-                <div className={styles.threadIcon}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </div>
-                <div className={styles.threadContent}>
-                  <div className={styles.threadTopRow}>
-                    <h3 className={styles.threadTitle}>
-                      {thread.title}
-                    </h3>
-                    <span className={styles.threadDate}>
-                      {new Date(thread.updatedAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <p className={styles.threadPreview}>{lastMsg.length > 50 ? lastMsg.substring(0,50) + "..." : lastMsg}</p>
-                </div>
-              </Link>
-            )
+              <ChatListItem
+                key={thread.id}
+                id={thread.id}
+                title={thread.title}
+                updatedAt={thread.updatedAt}
+                lastMsg={lastMsg}
+              />
+            );
           })}
         </div>
       </section>

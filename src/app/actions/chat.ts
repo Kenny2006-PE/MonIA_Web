@@ -78,12 +78,12 @@ export async function getThreads() {
   const user = await getDefaultUser();
   
   try {
-    // Limpiar hilos vacíos abandonados de más de 5 minutos
+    // Limpiar hilos vacíos sin mensajes
     await prisma.chatThread.deleteMany({
       where: {
         userId: user.id,
         messages: { none: {} },
-        createdAt: { lt: new Date(Date.now() - 5 * 60 * 1000) }
+        createdAt: { lt: new Date(Date.now() - 30 * 1000) }
       }
     });
   } catch (e) {
@@ -112,7 +112,28 @@ export async function getMessages(threadId: string) {
   });
 }
 
-// 4. Enviar mensaje y procesar con IA
+// 4. Eliminar un hilo de conversación y sus mensajes
+export async function deleteThread(threadId: string) {
+  const user = await getDefaultUser();
+  try {
+    await prisma.chatMessage.deleteMany({
+      where: { threadId }
+    });
+    await prisma.chatThread.deleteMany({
+      where: {
+        id: threadId,
+        userId: user.id
+      }
+    });
+    revalidatePath("/chat");
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting thread:", error);
+    throw new Error("No se pudo eliminar la conversación");
+  }
+}
+
+// 5. Enviar mensaje y procesar con IA
 export async function sendMessageToAI(threadId: string, userMessage: string) {
   const user = await getDefaultUser();
   
